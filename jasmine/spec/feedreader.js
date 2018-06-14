@@ -34,9 +34,9 @@ $(function() {
 
         /*writing similar to the above given function*/
         it('have a URL defined and the URL is not empty', function() {
-            for(var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds[i].url.length).not.toBe(0);
+            for(var i = 0; i < allFeeds.length; i++) { //loop through the allFeeds
+                expect(allFeeds[i].url).toBeDefined(); //check to be defined
+                expect(allFeeds[i].url.length).not.toBe(0); //check not to be empty
             }
         });
 
@@ -44,7 +44,8 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-         it('have a name defined and not empty', function() {
+         //similar to the above
+        it('have a name defined and not empty', function() {
             for(var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0);
@@ -63,18 +64,29 @@ $(function() {
 
          /*get element using querySelector, according to FEND, Part 2,
          Lesson 20 "Creating Content with JavaScript"*/
-         var el = document.querySelector('body');
+        let el = document.querySelector('body');
 
          /*should grab the class, according to MDN "Element.className"*/
-         it('is hidden by default', function() {
-            expect(el.className).toBe('menu-hidden');
-         });
+        it('is hidden by default', function() {
+            expect(el.className).toBe('menu-hidden');//check to be hidden
+        });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+        it('changes visibility when the menu icon is clicked', function() {
+            //we grab the first anchor element inside the hamburger menu
+            let menuIcon = document.querySelector('.menu-icon-link');
+            //we fire a click event, according to MDN "HTMLElement.click()"
+            menuIcon.click();
+            /*If we check in Developer Tools, we see that the class attribute
+            from the body tag becomes empty when hamburger menu is clicked */
+            expect(el.className).toBe(''); //check to be empty
+            menuIcon.click(); //click again
+            expect(el.className).toBe('menu-hidden'); ///check to be hidden
+        });
     });
 
 
