@@ -4,7 +4,7 @@
 
 * [About The Project](#abouttheproject)
 * [Project Instructions](#projectinstructions)
-* [Tests Tasks](#testtasks)
+* [Tasks For Testing](#tasksfortesting)
 
 ## About The Project
 
@@ -23,7 +23,7 @@ Make sure you follow these steps:
 
 At the bottom of the page, there is the Jasmine Spec Runner showing whether the tests are passing or not.
 
-## Tests Tasks
+## Tasks For Testing
 
 1. Edit the `allFeeds` variable in **./js/app.js** to make the provided test fail and see how Jasmine visualizes this failure in your application.
 2. Return the `allFeeds` variable to a passing state.
