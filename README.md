@@ -2,9 +2,9 @@
 
 ## Table of Contents
 
-* [About The Project](#abouttheproject)
-* [Project Instructions](#projectinstructions)
-* [Tasks For Testing](#tasksfortesting)
+* [About The Project](#AboutTheProject)
+* [Project Instructions](#ProjectInstructions)
+* [Tasks For Testing](#TasksForTesting)
 
 ## About The Project
 
