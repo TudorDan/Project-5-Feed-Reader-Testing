@@ -35,8 +35,10 @@ $(function() {
         /*writing similar to the above given function*/
         it('have a URL defined and the URL is not empty', function() {
             for(var i = 0; i < allFeeds.length; i++) { //loop through the allFeeds
-                expect(allFeeds[i].url).toBeDefined(); //check to be defined
-                expect(allFeeds[i].url.length).not.toBe(0); //check not to be empty
+                //check if each element is defined
+                expect(allFeeds[i].url).toBeDefined();
+                //check if each element is not empty
+                expect(allFeeds[i].url.length).not.toBe(0);
             }
         });
 
@@ -68,7 +70,7 @@ $(function() {
 
          /*should grab the class, according to MDN "Element.className"*/
         it('is hidden by default', function() {
-            expect(el.className).toBe('menu-hidden');//check to be hidden
+            expect(el.className).toBe('menu-hidden');//check if it's hidden
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -83,22 +85,41 @@ $(function() {
             menuIcon.click();
             /*If we check in Developer Tools, we see that the class attribute
             from the body tag becomes empty when hamburger menu is clicked */
-            expect(el.className).toBe(''); //check to be empty
+            expect(el.className).toBe(''); //check if it's empty
             menuIcon.click(); //click again
-            expect(el.className).toBe('menu-hidden'); ///check to be hidden
+            expect(el.className).toBe('menu-hidden'); //check if it's hidden
         });
     });
 
 
     /* TODO: Write a new test suite named "Initial Entries" */
-
+    describe('Initial Entries', function() {
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-
+         /*We use beforeEach() and done() similar to the example given in FEND,
+         Part 3, Lesson 22 "Writing Test Suites".
+         We call beforeEach() when the async work is complete with an optional
+         single argument, according to Jasmine introduction documentation.*/
+        beforeEach(function(done) {
+            /*Load the first feed defined (index of 0) and then call done()
+            function since this spec will not complete until its done() is called.*/
+            loadFeed(0, function() {
+                done();
+            });
+        });
+        /*The following spec is similar to the example given in Lesson 22, Section 18
+        "Correcting our Asynchronous Test"*/
+        it('should have at least an entry element within the feed container', function(done) {
+            /*We grab the first entry element and expect it not to be without any value,
+            using toBeNUll(), according to jasmine.github.io "introduction.js"*/
+            expect(document.querySelector('.entry')).not.toBeNull();
+            done();
+        });
+    });
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
