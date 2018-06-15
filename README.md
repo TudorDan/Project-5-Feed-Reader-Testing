@@ -17,9 +17,9 @@ In this project you are given a web-based application that reads RSS feeds. The 
 ## Project Instructions
 
 Make sure you follow these steps:
-    * clone or download this repository to your local computer;
-    * unzip the folder (in case you downloaded);
-    * open **index.html** in your preferred browser.
+* clone or download this repository to your local computer;
+* unzip the folder (in case you downloaded);
+* open **index.html** in your preferred browser.
 
 At the bottom of the page, there is the Jasmine Spec Runner showing whether the tests are passing or not.
 
