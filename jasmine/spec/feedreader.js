@@ -120,10 +120,25 @@ $(function() {
             done();
         });
     });
-    /* TODO: Write a new test suite named "New Feed Selection" */
 
+
+    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        /*We use beforeEach() and done() similar to "Initial Entries" suite.*/
+        beforeEach(function(done) {
+            loadFeed(1, function() { //load the next feed defined (index of 1)
+                done();
+            });
+        });
+
+        it('actually changes content', function(done) {
+            /*check the entriesChanged variable that we introduced in app.js*/
+            expect(entriesChanged).toBe(true);
+            done();
+        });
+    });
 }());
