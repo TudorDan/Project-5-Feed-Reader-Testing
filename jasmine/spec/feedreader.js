@@ -106,20 +106,22 @@ $(function() {
 
     /* Test suite for feed selection */
     describe('New Feed Selection', function() {
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
-        /*We use beforeEach() and done() similar to "Initial Entries" suite.*/
+        /*Check if the content actually changes when a new feed is loaded by
+        the loadFeed() function.
+         We use beforeEach() and done() similar to "Initial Entries" suite.*/
+        let firstFeed, secondFeed;
         beforeEach(function(done) {
-            loadFeed(1, function() { //load the next feed defined (index of 1)
-                done();
+            loadFeed(0, function() {
+                firstFeed = $('.feed').html();
+                loadFeed(1, function() {
+                    secondFeed = $('.feed').html();
+                    done();
+                });
             });
         });
 
         it('actually changes content', function(done) {
-            /*check the entriesChanged variable that we introduced in app.js*/
-            expect(entriesChanged).toBe(true);
+            expect(firstFeed===secondFeed).toBe(false); //make the first two feeds identical to fail this
             done();
         });
     });
