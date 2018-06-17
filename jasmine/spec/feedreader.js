@@ -27,67 +27,50 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
-
-        /*writing similar to the above given function*/
+        /*As required, this is a test that loops through each feed in the allFeeds object
+        and ensures it has a URL defined  and that the URL is not empty; writing is
+        similar to the above given function.*/
         it('have a URL defined and the URL is not empty', function() {
             for(var i = 0; i < allFeeds.length; i++) { //loop through the allFeeds
                 //check if each element is defined
-                expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url).toBeDefined(); //delete url field of any feed to fail this
                 //check if each element is not empty
-                expect(allFeeds[i].url.length).not.toBe(0);
+                expect(allFeeds[i].url.length).not.toBe(0); //empty  url field of any feed to fail this
             }
         });
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
-         //similar to the above
+        /*This is a test that loops through each feed in the allFeeds object and ensures
+        it has a name defined and that the name is not empty; writing is similar to the above*/
         it('have a name defined and not empty', function() {
             for(var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].name).toBeDefined();
-                expect(allFeeds[i].name.length).not.toBe(0);
+                expect(allFeeds[i].name).toBeDefined(); //delete name field of any feed to fail this
+                expect(allFeeds[i].name.length).not.toBe(0); //empty name of any feed to fail this
             }
         });
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    /*As required, this is a new test suite named "The menu" */
     describe('The menu', function() {
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+        /*This a test that ensures the menu element is hidden by default.*/
+        let body = $('body');
 
-         /*get element using querySelector, according to FEND, Part 2,
-         Lesson 20 "Creating Content with JavaScript"*/
-        let el = document.querySelector('body');
-
-         /*should grab the class, according to MDN "Element.className"*/
+         /*Check if the menu is initially hidden.*/
         it('is hidden by default', function() {
-            expect(el.className).toBe('menu-hidden');//check if it's hidden
+            expect(body.hasClass('menu-hidden')).toBe(true); //delete class or change name of class "menu-hidden" of body in index.html to fail this
         });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+         /* Check if the menu changes visibility when the menu icon is clicked.*/
         it('changes visibility when the menu icon is clicked', function() {
-            //we grab the first anchor element inside the hamburger menu
-            let menuIcon = document.querySelector('.menu-icon-link');
-            //we fire a click event, according to MDN "HTMLElement.click()"
+            let menuIcon = $('.menu-icon-link');
+
+            if(!body.hasClass('menu-hidden')) body.addClass('menu-hidden'); //ensure menu is hidden before show test
             menuIcon.click();
-            /*If we check in Developer Tools, we see that the class attribute
-            from the body tag becomes empty when hamburger menu is clicked */
-            expect(el.className).toBe(''); //check if it's empty
-            menuIcon.click(); //click again
-            expect(el.className).toBe('menu-hidden'); //check if it's hidden
+            expect(body.hasClass('menu-hidden')).toBe(false); //comment lines 130-132 in app.js to fail this
+
+            if(body.hasClass('menu-hidden')) body.deleteClass('menu-hidden'); //ensure menu is visible before hide test
+            menuIcon.click();
+            expect(body.hasClass('menu-hidden')).toBe(true); //comment lines 130-132 in app.js to fail this
         });
     });
 
